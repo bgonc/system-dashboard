@@ -361,9 +361,10 @@ class DashboardWindow(QMainWindow):
         col2.setAlignment(Qt.AlignmentFlag.AlignTop)
         
         services_card, srv_layout = self.create_card("Core Services")
-        self.lbl_filen = self.create_data_label("Loading...", color="#10b981", fontsize=16)
+        self.lbl_filen = self.create_data_label("Loading...", color="#10b981", fontsize=12)
+        self.lbl_filen.setWordWrap(True)
         srv_layout.addWidget(self.lbl_filen)
-        srv_layout.addWidget(self.create_data_label("Filen Timer (Next Sync)", is_sub=True))
+        srv_layout.addWidget(self.create_data_label("Active Timers", is_sub=True))
         
         self.lbl_workspaces = self.create_data_label("Loading...", fontsize=12)
         self.lbl_workspaces.setStyleSheet("font-size: 12px; font-family: 'Inter', sans-serif; padding: 0 12px;")
@@ -756,7 +757,7 @@ class DashboardWindow(QMainWindow):
 
     def check_services(self):
         if self.thermal_critical: return
-        self.run_async("filen", "systemctl --user list-timers filen.timer --no-pager")
+        self.run_async("filen", 'systemctl --user list-timers --no-pager 2>/dev/null')
         self.run_async("filen_logs", "journalctl --user -u filen.service -n 25 --no-pager")
         self.run_async("workspaces", "hyprctl clients -j")
         self.run_async("alerts_kernel", self.kernel_cmd)
@@ -805,16 +806,27 @@ class DashboardWindow(QMainWindow):
             
         elif identifier == "filen":
             lines = result.split('\n')
-            timer_info = "Waiting..."
+            entries = []
             for line in lines:
-                if "filen.timer" in line:
-                    match = re.search(r'(\d+[a-zA-Z\s]+left)', line)
-                    if match:
-                        timer_info = match.group(1).strip()
-                    else:
-                        timer_info = "Timer active"
-                    break
-            self.lbl_filen.setText(timer_info)
+                # Skip headers, separator lines, and summary lines
+                if not line.strip() or line.startswith('──') or line.startswith('NEXT') or 'timers listed' in line or 'Pass --all' in line:
+                    continue
+                # Each timer line from list-timers: NEXT | LEFT | LAST | PASSED | UNIT | ACTIVATES
+                parts = line.split()
+                # Find the UNIT column — it ends with .timer
+                unit = next((p for p in parts if p.endswith('.timer')), None)
+                if not unit:
+                    continue
+                # Extract 'left' info: look for pattern like '5min 3s left'
+                left_match = re.search(r'([\d]+[a-zA-Z]+(?:\s+[\d]+[a-zA-Z]+)?\s+left)', line)
+                left_str = left_match.group(1).strip() if left_match else "active"
+                entries.append(f"{unit}: {left_str}")
+            if entries:
+                self.lbl_filen.setText("\n".join(entries))
+                self.lbl_filen.setStyleSheet("font-size: 11px; font-family: 'Fira Code', monospace; padding: 0 12px; color: #10b981;")
+            else:
+                self.lbl_filen.setText("No active timers")
+                self.lbl_filen.setStyleSheet("font-size: 11px; font-family: 'Fira Code', monospace; padding: 0 12px; color: #94a3b8;")
             
         elif identifier == "filen_status":
             if result.strip() == "active":
