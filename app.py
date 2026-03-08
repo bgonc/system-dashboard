@@ -757,7 +757,7 @@ class DashboardWindow(QMainWindow):
     def check_services(self):
         if self.thermal_critical: return
         self.run_async("filen", "systemctl --user list-timers filen.timer --no-pager")
-        self.run_async("filen_logs", "journalctl --user -u filen.service -n 5 --no-pager")
+        self.run_async("filen_logs", "journalctl --user -u filen.service -n 25 --no-pager")
         self.run_async("workspaces", "hyprctl clients -j")
         self.run_async("alerts_kernel", self.kernel_cmd)
         self.set_systemd_filter(self.systemd_mode)
