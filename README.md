@@ -1,6 +1,6 @@
 # Native Wayland System Monitor
 
-![System Dashboard](screenshot.jpg)
+!System Dashboard
 
 A lightweight, Python-based (Qt) native system dashboard optimized for Hyprland. 
 
