@@ -1,46 +1,70 @@
-# Native Wayland System Monitor
+# System Dashboard
 
-!System Dashboard
+A PyQt6 desktop dashboard for Arch Linux, built for Hyprland / Wayland.  
+Sits always-on-top and shows a live overview of system state — without the overhead of a browser tab or Electron app.
 
-A lightweight, Python-based (Qt) native system dashboard optimized for Hyprland. 
+<img width="1920" height="1050" alt="System Dashboard screenshot" src="https://github.com/user-attachments/assets/60aac144-2dbf-4a49-a73d-7e8ac9c22453" />
 
-This native Wayland application provides a sleek, Bento Box-style masonry layout that monitors your core system metrics, background services, and system alerts without the overhead of electron or web-based dashboards.
+---
 
-## Features
+## What it monitors
 
-- **Zero-overhead background polling:** Aggressively caches system updates with a 60-minute package cache.
-- **Passive systemd timer monitoring:** Tracks the active state of background services like the Filen CLI syncing engine without actively scanning your disk.
-- **Live thermal tracking and active socket monitoring:** Keeps a close eye on your CPU/hardware package temperatures (with auto-suspend safeties built-in) and actively open network sockets.
-- **Filtered journalctl and systemctl alert tracking:** Features dynamic Chip toggle buttons to instantly parse critical hardware events, full kernel activity, and broken/crashing systemd services instantly.
+- **System metrics** — CPU, RAM, disk usage, network I/O, battery
+- **Hardware temperatures** — per-sensor readings with auto-suspend safeties built in
+- **Network sockets** — open connections in real time
+- **Package updates** — Pacman and AUR update counts (cached for 60 minutes)
+- **Systemd health** — broken, stopped, or crashed services in both system and user scope
+- **Kernel & journal alerts** — chip-toggle buttons to filter critical hardware events, kernel activity, or crashing services
+- **Filen Cloud Sync** — passive monitoring of the Filen CLI sync engine state
+
+---
 
 ## Installation
 
-1. Clone or download the repository into your preferred folder:
+1. Clone the repository:
    ```bash
-   git clone https://github.com/bgonc/bgonc.git
-   cd bgonc/system_dashboard
+   git clone https://github.com/bgonc/system-dashboard.git
+   cd system-dashboard
    ```
 
-2. Create a Python virtual environment and activate it:
+2. Create and activate a Python virtual environment:
    ```bash
    python -m venv venv
    source venv/bin/activate
    ```
 
-3. Install the required dependencies:
+3. Install dependencies:
    ```bash
    pip install -r requirements.txt
    ```
 
-## Usage
+---
 
-You can launch the dashboard directly using the provided shell script:
+## Usage
 
 ```bash
 ./run.sh
 ```
 
-**Note:** The application uses `QT_QPA_PLATFORM=wayland` inside the shell script to force crisp native Wayland rendering on Hyprland.
+This activates the virtual environment and sets `QT_QPA_PLATFORM=wayland` for native Wayland rendering.
 
-<img width="1920" height="1050" alt="image" src="https://github.com/user-attachments/assets/60aac144-2dbf-4a49-a73d-7e8ac9c22453" />
+---
 
+## Requirements
+
+- Arch Linux (or any systemd-based distro)
+- Hyprland or another Wayland compositor
+- Python 3.11+
+- Dependencies: `psutil`, `PyQt6` (see `requirements.txt`)
+
+---
+
+## License
+
+MIT — see [LICENSE](LICENSE) for details.
+
+---
+
+## Author
+
+[Bruno Goncalves](https://bgonc.github.io) · [github.com/bgonc](https://github.com/bgonc)
