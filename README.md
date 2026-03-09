@@ -23,7 +23,7 @@ Sits always-on-top and shows a live overview of system state — without the ove
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/bgonc/system-dashboard.git
+   git clone https://codeberg.org/bgonc/system-dashboard.git
    cd system-dashboard
    ```
 
@@ -67,4 +67,4 @@ MIT — see [LICENSE](LICENSE) for details.
 
 ## Author
 
-[Bruno Goncalves](https://bgonc.github.io) · [github.com/bgonc](https://github.com/bgonc)
+[Bruno Goncalves](https://bgonc.codeberg.page) · [github.com/bgonc](https://codeberg.org/bgonc)
