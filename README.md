@@ -61,8 +61,9 @@ This activates the virtual environment and sets `QT_QPA_PLATFORM=wayland` for na
 
 ## Usage and permission
 
-This repository is not open source.
-No reuse, modification, redistribution, or commercial use is permitted without prior written permission.
+This repository is source-available, but not open source.
+Personal viewing and reference are allowed.
+Reuse, modification, redistribution, derivative works, and commercial use are not permitted without prior written permission.
 See [LICENSE](LICENSE) for details.
 
 ---
