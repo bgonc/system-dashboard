@@ -1,20 +1,29 @@
-Copyright (c) 2026 Bruno Goncalves
-All rights reserved.
+                    GNU GENERAL PUBLIC LICENSE
+                       Version 3, 29 June 2007
 
-Except for third-party dependencies, libraries, and assets that remain subject
-to their own licenses, all original code, text, images, and other content in
-this repository are proprietary.
+ Copyright (C) 2007 Free Software Foundation, Inc. <https://fsf.org/>
+ Everyone is permitted to copy and distribute verbatim copies
+ of this license document, but changing it is not allowed.
 
-Permission is granted to view this repository and use it for personal reference
-only. No permission is granted to copy, modify, merge, publish, distribute,
-sublicense, sell, use commercially, or create derivative works from any
-original material in this repository, in whole or in part, without prior
-written permission from the copyright holder.
+                            Preamble
 
-THE SOFTWARE AND CONTENT IN THIS REPOSITORY ARE PROVIDED "AS IS", WITHOUT
-WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE
-WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND
-NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHOR OR COPYRIGHT HOLDER BE LIABLE
-FOR ANY CLAIM, DAMAGES, OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
-TORT, OR OTHERWISE, ARISING FROM, OUT OF, OR IN CONNECTION WITH THE SOFTWARE,
-CONTENT, OR THE USE OR OTHER DEALINGS IN THIS REPOSITORY.
+  The GNU General Public License is a free, copyleft license for
+software and other kinds of works.
+
+  For the precise terms and conditions for copying, distribution and
+modification, see the full text at <https://www.gnu.org/licenses/gpl-3.0.txt>.
+
+  Copyright (C) 2026 Bruno Goncalves
+
+  This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+  This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+  You should have received a copy of the GNU General Public License
+along with this program.  If not, see <https://www.gnu.org/licenses/>.

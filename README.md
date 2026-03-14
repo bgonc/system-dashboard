@@ -1,33 +1,36 @@
 # System Dashboard
 
-A PyQt6 desktop dashboard for Arch Linux, built for Hyprland / Wayland.  
-This is a personal utility and learning project for my own daily setup.
+A PyQt6 desktop dashboard for monitoring my Arch Linux setup — CPU, RAM, temperatures, package updates, systemd services, and more, all in one place.
+
+I built this because I wanted a quick-glance panel for my Hyprland setup without opening a browser or running something like an Electron app. It's been a genuinely useful side project to have running.
 
 <img width="1920" height="1050" alt="System Dashboard screenshot" src="https://github.com/user-attachments/assets/60aac144-2dbf-4a49-a73d-7e8ac9c22453" />
 
 ---
 
-## What it monitors
+## What it tracks
 
-- **System metrics**: CPU, RAM, disk usage, network I/O, battery
-- **Hardware temperatures**: per-sensor readings
-- **Network sockets**: open connections in real time
-- **Package updates**: Pacman and AUR update counts (cached)
-- **Systemd health**: broken, stopped, or crashed services in system and user scope
-- **Kernel & journal alerts**
-- **Filen Cloud Sync**: passive monitoring of sync state
+- **CPU, RAM, disk** — live usage and progress bars
+- **Network I/O** — real-time rates in the header
+- **Battery** — charge level and AC status
+- **Hardware temps** — per-sensor readings, flashes red if critical
+- **Package updates** — Pacman and AUR counts (cached, refreshed hourly)
+- **Systemd health** — broken, running, or stopped services (system and user scope)
+- **Kernel & journal alerts** — filterable by severity
+- **Filen Cloud Sync** — sync pair status, recent logs, and account quota
+- **Active network sockets** — top connected processes
 
 ---
 
-## Installation
+## Getting started
 
-1. Clone the repository:
+1. Clone the repo:
    ```bash
    git clone https://codeberg.org/bgonc/system-dashboard.git
    cd system-dashboard
    ```
 
-2. Create and activate a Python virtual environment:
+2. Set up a virtual environment:
    ```bash
    python -m venv venv
    source venv/bin/activate
@@ -38,15 +41,12 @@ This is a personal utility and learning project for my own daily setup.
    pip install -r requirements.txt
    ```
 
----
+4. Run:
+   ```bash
+   ./run.sh
+   ```
 
-## Usage
-
-```bash
-./run.sh
-```
-
-This activates the virtual environment and sets `QT_QPA_PLATFORM=wayland` for native Wayland rendering.
+`run.sh` takes care of activating the venv and setting `QT_QPA_PLATFORM=wayland` for native rendering.
 
 ---
 
@@ -55,16 +55,14 @@ This activates the virtual environment and sets `QT_QPA_PLATFORM=wayland` for na
 - Arch Linux (or any systemd-based distro)
 - Hyprland or another Wayland compositor
 - Python 3.11+
-- Dependencies: `psutil`, `PyQt6` (see `requirements.txt`)
+- `psutil`, `PyQt6` (see `requirements.txt`)
 
 ---
 
-## Usage and permission
+## License
 
-This repository is source-available, but not open source.
-Personal viewing and reference are allowed.
-Reuse, modification, redistribution, derivative works, and commercial use are not permitted without prior written permission.
-See [LICENSE](LICENSE) for details.
+GPL-3.0 — see [LICENSE](LICENSE).  
+If you build on this, keep it open.
 
 ---
 
